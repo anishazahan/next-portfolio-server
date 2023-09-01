@@ -4,6 +4,7 @@ import {
   deleteProjectByID,
   getProjectByID,
   getProjects,
+  messageController,
   updateProjectByID,
 } from "./projects.controller";
 
@@ -15,5 +16,6 @@ router.get("/", getProjects);
 router.get("/:id", getProjectByID);
 router.patch("/update/:id", updateProjectByID);
 router.delete("/delete/:id", deleteProjectByID);
+router.post("/send-message", messageController);
 
 export default router;
