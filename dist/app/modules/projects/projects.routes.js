@@ -11,4 +11,5 @@ router.get("/", projects_controller_1.getProjects);
 router.get("/:id", projects_controller_1.getProjectByID);
 router.patch("/update/:id", projects_controller_1.updateProjectByID);
 router.delete("/delete/:id", projects_controller_1.deleteProjectByID);
+router.post("/send-message", projects_controller_1.messageController);
 exports.default = router;
