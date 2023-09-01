@@ -9,8 +9,9 @@ import projectRoutes from "./app/modules/projects/projects.routes";
 
 // Configure CORS to allow requests from 'http://localhost:3000'
 // const allowedOrigins = ["https://next-portfolio-server.vercel.app"];
-const allowedOrigins = ["*"];
-
+// const allowedOrigins = ["http://localhost:3000"];
+// const allowedOrigins = ["*"];
+const allowedOrigins = ["https://anisha-portfolio.vercel.app"];
 const corsOptions: cors.CorsOptions = {
   origin: (origin, callback) => {
     if (allowedOrigins.indexOf(origin!) !== -1 || !origin) {
@@ -33,30 +34,17 @@ app.get("/", (req: Request, res: Response, next: NextFunction) => {
 });
 
 app.use("/api/project", projectRoutes);
+// Set the Access-Control-Allow-Origin header for your API routes
+// app.use(
+//   "/api/project",
+//   (req, res, next) => {
+//     res.header(
+//       "Access-Control-Allow-Origin",
+//       "https://anisha-portfolio.vercel.app"
+//     );
+//     next();
+//   },
+//   projectRoutes
+// );
 
 export default app;
-
-/*
-    step1:interface
-    step1:Schema
-    step1:model
-    step1:database query  on model
-    */
-/*
-
-
-   // creating an interface 
-     //  creating schema using interface
-      // creating model 
-      // creating instance using model
-
-  => breakdown
-
-  step1: interface  ->interface.ts
-  step2: schema,model -> model.ts
-  step3: routes function -> controller.ts
-  step4: database query function -> service.ts
-
-  */
-
-// route -> controller -> service
