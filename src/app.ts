@@ -8,7 +8,9 @@ const app: Application = express();
 import projectRoutes from "./app/modules/projects/projects.routes";
 
 // Configure CORS to allow requests from 'http://localhost:3000'
-const allowedOrigins = ["https://next-portfolio-server.vercel.app/"];
+// const allowedOrigins = ["https://next-portfolio-server.vercel.app"];
+const allowedOrigins = ["*"];
+
 const corsOptions: cors.CorsOptions = {
   origin: (origin, callback) => {
     if (allowedOrigins.indexOf(origin!) !== -1 || !origin) {
