@@ -6,6 +6,7 @@ const app: Application = express();
 // application route
 
 import projectRoutes from "./app/modules/projects/projects.routes";
+import Message from "./app/modules/projects/sendMessage.model";
 
 //  using cors
 app.use(cors());
@@ -17,6 +18,29 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/", (req: Request, res: Response, next: NextFunction) => {
   res.send("hellow server");
 });
+
+// Define the message route
+app.post(
+  "/send-message",
+  async (req: Request, res: Response, next: NextFunction) => {
+    const data = req.body;
+    // console.log(data);
+    try {
+      const savedMessage = await Message.create(data);
+      res.status(200).json({
+        sendMessage: "Message Send Successfully.",
+        status: "success",
+        data: savedMessage,
+      });
+    } catch (error) {
+      // console.error(error);
+      res.status(500).json({
+        sendMessage: "Failed to send message.",
+        status: "error",
+      });
+    }
+  }
+);
 
 app.use("/api/project", projectRoutes);
 

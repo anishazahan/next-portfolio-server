@@ -9,3 +9,8 @@ export interface IProjects {
   code: string;
   server: string;
 }
+export interface IMessage {
+  name: string;
+  email: string;
+  message: string;
+}
