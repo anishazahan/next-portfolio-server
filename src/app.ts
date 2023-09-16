@@ -11,7 +11,10 @@ import projectRoutes from "./app/modules/projects/projects.routes";
 // const allowedOrigins = ["https://next-portfolio-server.vercel.app"];
 // const allowedOrigins = ["http://localhost:3000"];
 // const allowedOrigins = ["*"];
-const allowedOrigins = ["https://anisha-portfolio.vercel.app"];
+const allowedOrigins = [
+  "https://anisha-portfolio.vercel.app",
+  "http://localhost:3000",
+];
 const corsOptions: cors.CorsOptions = {
   origin: (origin, callback) => {
     if (allowedOrigins.indexOf(origin!) !== -1 || !origin) {
@@ -31,6 +34,16 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req: Request, res: Response, next: NextFunction) => {
   res.send("hellow server");
+});
+
+app.post("/api/formdata", (req: Request, res: Response, next: NextFunction) => {
+  console.log("data ................");
+  const data = req.params;
+
+  res.status(200).json({
+    message: " Form Submitted Successfully",
+    data: data,
+  });
 });
 
 app.use("/api/project", projectRoutes);
